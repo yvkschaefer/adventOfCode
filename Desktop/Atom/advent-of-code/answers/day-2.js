@@ -1013,4 +1013,23 @@ function calculateWrappingPaperNeeds (data){
 }
 
 
-console.log(calculateWrappingPaperNeeds(input));
+console.log('wrapping paper needs are: ', calculateWrappingPaperNeeds(input));
+
+
+
+/*PART TWO*/
+
+function calculateRibbon (data){
+    return data.split('\n').reduce(function(ribbonNeeds, eachGift){
+        var d = eachGift.split('x');
+        var l = d[0];
+        var w = d[1];
+        var h = d[2];
+        ribbonNeeds += l*w*h;
+        ribbonNeeds += Math.min((2*l+2*w), (2*l+2*h), (2*h+2*w));
+        return ribbonNeeds;
+    },0);
+}
+
+
+console.log('ribbon needs are: ', calculateRibbon(input));
